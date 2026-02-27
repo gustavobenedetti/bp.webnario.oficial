@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estruturação Comercial de Alta Performance · Branches Performance</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0C0C0C;
+    --surface: #141414;
+    --surface2: #1A1A1A;
+    --border: #242424;
+    --orange: #F5680A;
+    --orange-dark: #D95A08;
+    --orange-dim: rgba(245,104,10,0.10);
+    --white: #F5F5F5;
+    --gray: #888888;
+    --gray-light: #CCCCCC;
+    --font: 'Montserrat', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 11px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .topbar-inner {
+    max-width: 520px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .topbar-dot {
+    width: 7px; height: 7px;
+    background: var(--orange);
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .topbar-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-light);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .topbar-text span { color: var(--orange); }
+
+  /* HERO */
+  .hero {
+    padding: 36px 0 20px;
+    text-align: center;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .brand {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 14px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--orange-dim);
+    border: 1px solid rgba(245,104,10,0.25);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(24px, 6vw, 34px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .hero h1 span { color: var(--orange); }
+
+  .hero-sub {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 400px;
+    margin: 0 auto 18px;
+    font-weight: 500;
+  }
+
+  .hero-sub strong { color: var(--gray-light); font-weight: 600; }
+
+  .event-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .event-item {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-light);
+  }
+
+  .event-divider { width: 1px; height: 12px; background: var(--border); }
+
+
+
+  /* FORM */
+  .form-section { animation: fadeUp 0.5s ease 0.15s both; }
+
+  .form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  }
+
+  .form-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 3px;
+    letter-spacing: -0.02em;
+  }
+
+  .form-subtitle {
+    font-size: 12px;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .form-group { margin-bottom: 11px; }
+
+  .form-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 5px;
+  }
+
+  .form-input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-input::placeholder { color: #3A3A3A; }
+
+  .form-input:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px var(--orange-dim);
+  }
+
+  .form-error {
+    font-size: 11px;
+    color: #FF6B6B;
+    margin-top: 4px;
+    display: none;
+    font-weight: 600;
+  }
+
+  /* CTA ÚNICO */
+  .cta-wrapper {
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .btn-primary {
+    width: 100%;
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(245,104,10,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    display: block;
+  }
+
+  .btn-primary:hover {
+    background: var(--orange-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 28px rgba(245,104,10,0.4);
+  }
+
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .btn-sub {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 8px;
+  }
+
+  /* CREDIBILITY */
+  .credibility {
+    margin-top: 24px;
+    text-align: center;
+    animation: fadeUp 0.5s ease 0.25s both;
+  }
+
+  .cred-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+
+  .cred-stats { display: flex; justify-content: center; }
+
+  .cred-item {
+    flex: 1;
+    padding: 13px 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .cred-item:first-child { border-radius: 10px 0 0 10px; }
+  .cred-item:last-child { border-radius: 0 10px 10px 0; border-left: none; }
+  .cred-item:not(:first-child):not(:last-child) { border-left: none; }
+
+  .cred-value {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--orange);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .cred-desc {
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--gray);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 10px;
+    color: var(--gray);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-dot"></div>
+    <span class="topbar-text">Aula gratuita · <span>Terça-feira · 20h</span> · Vagas limitadas</span>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <div class="hero">
+    <div class="brand">Branches Performance</div>
+    <div class="badge">Aula Online Gratuita</div>
+    <h1>Estruturação Comercial<br>de <span>Alta Performance</span></h1>
+    <p class="hero-sub">
+      Entenda o modelo comercial que gerou <strong>mais de R$500 milhões em negócios</strong> para empresas como a sua.
+    </p>
+    <div class="event-info">
+      <div class="event-item">📅 Terça-feira</div>
+      <div class="event-divider"></div>
+      <div class="event-item">🕗 20h00</div>
+      <div class="event-divider"></div>
+      <div class="event-item">💻 Online e gratuito</div>
+    </div>
+  </div>
+
+
+
+  <div class="form-section">
+    <div class="form-card">
+
+      <div class="form-title">Garanta sua vaga gratuita</div>
+      <div class="form-subtitle">Preencha os dados abaixo para confirmar presença</div>
+
+      <form id="capture-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="nome">Nome completo</label>
+          <input class="form-input" type="text" id="nome" placeholder="Seu nome" autocomplete="name" required>
+          <div class="form-error" id="err-nome">Por favor, informe seu nome</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="telefone">WhatsApp</label>
+          <input class="form-input" type="tel" id="telefone" placeholder="(00) 00000-0000" autocomplete="tel" required>
+          <div class="form-error" id="err-telefone">Por favor, informe seu WhatsApp</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="area">Área de atuação</label>
+          <input class="form-input" type="text" id="area" placeholder="Ex: Tecnologia, Serviços, Varejo..." required>
+          <div class="form-error" id="err-area">Por favor, informe sua área de atuação</div>
+        </div>
+
+        <div class="cta-wrapper">
+          <button type="submit" class="btn-primary" id="submit-btn">
+            Quero garantir minha vaga gratuita →
+          </button>
+          <div class="btn-sub">Acesse o grupo exclusivo</div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="credibility">
+    <div class="cred-label">Branches Performance</div>
+    <div class="cred-stats">
+      <div class="cred-item"><div class="cred-value">+60</div><div class="cred-desc">Empresas</div></div>
+      <div class="cred-item"><div class="cred-value">R$500M</div><div class="cred-desc">Em negócios</div></div>
+      <div class="cred-item"><div class="cred-value">5 anos</div><div class="cred-desc">De operação</div></div>
+    </div>
+  </div>
+
+  <div class="footer">© 2026 Branches Performance · Todos os direitos reservados</div>
+
+</div>
+
+<script>
+  // ========================
+  // WEBHOOK — EDITAR AQUI SE NECESSÁRIO
+  // ========================
+  const WEBHOOK_URL = 'https://api.datacrazy.io/v1/crm/api/crm/flows/webhooks/23936e91-df66-47b0-b884-78dd058b1c69/b20fc088-9cce-472b-9bc6-2e4e16c71e98';
+
+  // ========================
+  // LINK DO GRUPO — EDITAR AQUI SE NECESSÁRIO
+  // ========================
+  const WHATSAPP_GROUP = 'https://chat.whatsapp.com/Iwi10qePQ49G6L6Z9wo7KU';
+
+  // ========================
+  // DATA DO EVENTO — EDITAR AQUI SE NECESSÁRIO
+  // ========================
+  const EVENT_DATE = new Date('2026-03-10T20:00:00-03:00');
+
+
+
+  // PHONE MASK
+  document.getElementById('telefone').addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g,'').slice(0,11);
+    if (v.length >= 7) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    else if (v.length >= 3) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    else if (v.length >= 1) v = `(${v}`;
+    e.target.value = v;
+  });
+
+  // SUBMIT — envia form e redireciona para o grupo
+  document.getElementById('capture-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
+    const area = document.getElementById('area').value.trim();
+    let valid = true;
+
+    document.getElementById('err-nome').style.display = nome ? 'none' : 'block';
+    if (!nome) valid = false;
+    document.getElementById('err-telefone').style.display = (telefone && telefone.replace(/\D/g,'').length >= 10) ? 'none' : 'block';
+    if (!telefone || telefone.replace(/\D/g,'').length < 10) valid = false;
+    document.getElementById('err-area').style.display = area ? 'none' : 'block';
+    if (!area) valid = false;
+    if (!valid) return;
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Confirmando vaga...';
+
+    const p = new URLSearchParams(window.location.search);
+
+    // Envia para o webhook (sem bloquear o redirecionamento)
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome, telefone,
+        area_de_atuacao: area,
+        origem: 'webinario_branches',
+        data_cadastro: new Date().toISOString(),
+        utm_source: p.get('utm_source') || '',
+        utm_medium: p.get('utm_medium') || '',
+        utm_campaign: p.get('utm_campaign') || '',
+        utm_content: p.get('utm_content') || ''
+      }),
+      mode: 'no-cors'
+    }).catch(() => {}); // silencia erros de rede — redirecionamento acontece de qualquer forma
+
+    // Redireciona para o grupo imediatamente
+    setTimeout(() => {
+      window.location.href = WHATSAPP_GROUP;
+    }, 400);
+  });
+</script>
+</body>
+</html>
