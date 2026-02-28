@@ -4,6 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Estruturação Comercial de Alta Performance! · Branches Performance</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1513806236936915');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,7 +59,6 @@
     padding: 0 20px 80px;
   }
 
-  /* TOP BAR */
   .topbar {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -83,7 +101,6 @@
 
   .topbar-text span { color: var(--orange); }
 
-  /* HERO */
   .hero {
     padding: 36px 0 20px;
     text-align: center;
@@ -159,9 +176,6 @@
 
   .event-divider { width: 1px; height: 12px; background: var(--border); }
 
-
-
-  /* FORM */
   .form-section { animation: fadeUp 0.5s ease 0.15s both; }
 
   .form-card {
@@ -238,7 +252,6 @@
     font-weight: 600;
   }
 
-  /* CTA ÚNICO */
   .cta-wrapper {
     margin-top: 8px;
     text-align: center;
@@ -280,7 +293,6 @@
     margin-top: 8px;
   }
 
-  /* CREDIBILITY */
   .credibility {
     margin-top: 24px;
     text-align: center;
@@ -364,8 +376,6 @@
     </div>
   </div>
 
-
-
   <div class="form-section">
     <div class="form-card">
 
@@ -424,13 +434,6 @@
   // ========================
   const WHATSAPP_GROUP = 'https://chat.whatsapp.com/Iwi10qePQ49G6L6Z9wo7KU';
 
-  // ========================
-  // DATA DO EVENTO — EDITAR AQUI SE NECESSÁRIO
-  // ========================
-  const EVENT_DATE = new Date('2026-03-10T20:00:00-03:00');
-
-
-
   // PHONE MASK
   document.getElementById('telefone').addEventListener('input', function(e) {
     let v = e.target.value.replace(/\D/g,'').slice(0,11);
@@ -440,7 +443,7 @@
     e.target.value = v;
   });
 
-  // SUBMIT — envia form e redireciona para o grupo
+  // SUBMIT — dispara Lead no Pixel, envia webhook e redireciona
   document.getElementById('capture-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -461,9 +464,14 @@
     btn.disabled = true;
     btn.textContent = 'Confirmando vaga...';
 
+    // ========================
+    // DISPARA EVENTO LEAD NO PIXEL
+    // ========================
+    fbq('track', 'Lead');
+
     const p = new URLSearchParams(window.location.search);
 
-    // Envia para o webhook (sem bloquear o redirecionamento)
+    // Envia para o webhook
     fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -478,9 +486,9 @@
         utm_content: p.get('utm_content') || ''
       }),
       mode: 'no-cors'
-    }).catch(() => {}); // silencia erros de rede — redirecionamento acontece de qualquer forma
+    }).catch(() => {});
 
-    // Redireciona para o grupo imediatamente
+    // Redireciona para o grupo
     setTimeout(() => {
       window.location.href = WHATSAPP_GROUP;
     }, 400);
