@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Estruturação Comercial de Alta Performance! · Branches Performance</title>
+<title>Acesse os Bastidores do Modelo Comercial · Branches Performance · 24/03</title>
 
 <!-- Meta Pixel Code -->
 <script>
@@ -33,7 +33,6 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
     --surface2: #1A1A1A;
     --border: #242424;
     --orange: #F5680A;
-    --orange-dark: #D95A08;
     --orange-dim: rgba(245,104,10,0.10);
     --white: #F5F5F5;
     --gray: #888888;
@@ -55,13 +54,9 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
     overflow-x: hidden;
   }
 
-  .wrapper {
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
-  }
+  .wrapper { max-width: 520px; margin: 0 auto; padding: 0 20px 80px; }
 
-  /* ── TOPBAR ── */
+  /* TOPBAR */
   .topbar {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -71,290 +66,84 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
     top: 0;
     z-index: 100;
   }
-
   .topbar-inner {
-    max-width: 520px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    max-width: 520px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
   }
-
   .topbar-dot {
     width: 7px; height: 7px;
-    background: var(--orange);
-    border-radius: 50%;
-    animation: pulse-dot 2s infinite;
-    flex-shrink: 0;
+    background: var(--orange); border-radius: 50%;
+    animation: pulse-dot 2s infinite; flex-shrink: 0;
   }
-
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(0.7); }
   }
-
   .topbar-text {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--gray-light);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    font-size: 11px; font-weight: 700;
+    color: var(--gray-light); letter-spacing: 0.04em; text-transform: uppercase;
   }
-
   .topbar-text span { color: var(--orange); }
 
-  /* ── BARRA DE ACESSOS ── */
-  .vagas-banner {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-top: 12px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .vagas-banner::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    pointer-events: none;
-    animation: border-pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes border-pulse {
-    0%, 100% { box-shadow: inset 0 0 0 1px rgba(239,68,68,0.0); }
-    50%       { box-shadow: inset 0 0 0 1px rgba(239,68,68,0.5); }
-  }
-
-  .vagas-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-
-  .vagas-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--gray-light);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .vagas-count {
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--red);
-    animation: count-flash 2s ease-in-out infinite;
-  }
-
-  @keyframes count-flash {
-    0%, 80%, 100% { opacity: 1; }
-    90% { opacity: 0.3; }
-  }
-
-  .vagas-bar-bg {
-    background: var(--surface2);
-    border-radius: 100px;
-    height: 10px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-
-  .vagas-bar-fill {
-    height: 100%;
-    border-radius: 100px;
-    background: linear-gradient(90deg, #b91c1c, #ef4444);
-    width: 78%;
-    position: relative;
-    animation: bar-glow 1.5s ease-in-out infinite alternate;
-    transition: width 1s ease;
-  }
-
-  .vagas-bar-fill::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent 60%, rgba(255,255,255,0.35) 80%, transparent 100%);
-    animation: bar-shine 2s linear infinite;
-  }
-
-  @keyframes bar-shine {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
-
-  @keyframes bar-glow {
-    from { box-shadow: 0 0 6px rgba(239,68,68,0.5); }
-    to   { box-shadow: 0 0 16px rgba(239,68,68,0.9); }
-  }
-
-  .vagas-sub {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--gray);
-    margin-top: 6px;
-    text-align: right;
-  }
-
-  /* ── HERO ── */
+  /* HERO */
   .hero {
-    padding: 24px 0 16px;
-    text-align: center;
+    padding: 32px 0 20px; text-align: center;
     animation: fadeUp 0.5s ease both;
   }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    display: inline-flex; align-items: center; gap: 6px;
     background: var(--orange-dim);
     border: 1px solid rgba(245,104,10,0.25);
-    border-radius: 100px;
-    padding: 5px 14px;
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--orange);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    animation: badge-glow 2.5s ease-in-out infinite;
+    border-radius: 100px; padding: 5px 14px;
+    font-size: 10px; font-weight: 700; color: var(--orange);
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px;
   }
-
-  @keyframes badge-glow {
-    0%, 100% { box-shadow: 0 0 0px rgba(245,104,10,0); border-color: rgba(245,104,10,0.25); }
-    50%       { box-shadow: 0 0 12px rgba(245,104,10,0.35); border-color: rgba(245,104,10,0.6); }
-  }
-
   .hero h1 {
-    font-size: clamp(24px, 6vw, 34px);
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    color: var(--white);
-    margin-bottom: 10px;
+    font-size: clamp(22px, 5.5vw, 32px);
+    font-weight: 900; line-height: 1.2;
+    letter-spacing: -0.03em; color: var(--white); margin-bottom: 16px;
   }
-
   .hero h1 span { color: var(--orange); }
-
   .hero-sub {
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.7;
-    max-width: 400px;
-    margin: 0 auto 18px;
-    font-weight: 500;
+    font-size: 14px; color: var(--gray);
+    line-height: 1.75; max-width: 420px;
+    margin: 0 auto 24px; font-weight: 500;
   }
-
-  .hero-sub strong { color: var(--gray-light); font-weight: 600; }
+  .hero-sub strong { color: var(--gray-light); font-weight: 700; }
 
   .event-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 12px; flex-wrap: wrap; margin-bottom: 24px;
   }
-
-  .event-item {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--gray-light);
-  }
-
+  .event-item { font-size: 12px; font-weight: 600; color: var(--gray-light); }
   .event-divider { width: 1px; height: 12px; background: var(--border); }
 
-  /* ── CTA SECTION ── */
-  .cta-section { animation: fadeUp 0.5s ease 0.15s both; }
-
-  .cta-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 24px 20px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .cta-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--orange), transparent);
-    animation: top-sweep 2s linear infinite;
-    background-size: 200% 100%;
-  }
-
-  @keyframes top-sweep {
-    0%   { background-position: -100% 0; }
-    100% { background-position: 200% 0; }
-  }
-
-  .cta-card-title {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 4px;
-    letter-spacing: -0.02em;
-  }
-
-  .cta-card-sub {
-    font-size: 12px;
-    color: var(--gray);
-    font-weight: 500;
-    margin-bottom: 20px;
-  }
-
+  /* BOTÃO */
   .btn-whatsapp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    background: #25D366;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 16px;
-    font-family: var(--font);
-    font-size: 14px;
-    font-weight: 800;
-    cursor: pointer;
-    text-decoration: none;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; max-width: 420px; margin: 0 auto 10px;
+    background: #25D366; color: #fff; border: none; border-radius: 10px;
+    padding: 16px; font-family: var(--font); font-size: 14px; font-weight: 800;
+    cursor: pointer; text-decoration: none;
     transition: background 0.2s, transform 0.15s;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+    text-transform: uppercase; letter-spacing: 0.02em;
     animation: btn-attention 4s ease-in-out infinite;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
-
   .btn-whatsapp::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
+    content: ''; position: absolute; top: 0; left: 0;
     width: 100%; height: 100%;
     background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
     animation: btn-shine 3s linear infinite;
   }
-
   @keyframes btn-shine {
     0%   { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
   }
-
   @keyframes btn-attention {
     0%, 60%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.3); transform: scale(1); }
     65%            { box-shadow: 0 4px 30px rgba(37,211,102,0.7); transform: scale(1.015); }
@@ -362,149 +151,163 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
     75%            { transform: scale(1.01); }
     80%            { transform: scale(1); box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
   }
-
   .btn-whatsapp:hover  { background: #1ebe5d; transform: translateY(-1px) scale(1.01); }
   .btn-whatsapp:active { transform: translateY(0) scale(0.99); }
-  .btn-whatsapp svg    { flex-shrink: 0; }
+  .btn-whatsapp svg { flex-shrink: 0; }
 
   .btn-sub {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-top: 10px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gray);
+    text-align: center; margin-bottom: 12px; display: block;
   }
 
-  /* ── NOTIFICAÇÃO AO VIVO ── */
-  .live-notification {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(37,211,102,0.06);
-    border: 1px solid rgba(37,211,102,0.18);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin-top: 12px;
-    animation: notif-in 0.4s ease;
+  /* URGENCY */
+  .urgency-note {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 11px; font-weight: 600; color: var(--red); margin-bottom: 32px;
+  }
+  .urgency-dot {
+    width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+    animation: pulse-dot 1.5s infinite; flex-shrink: 0;
   }
 
-  @keyframes notif-in {
-    from { opacity: 0; transform: translateY(-6px); }
+  /* PILLARS */
+  .pillars-section { margin-bottom: 28px; animation: fadeUp 0.5s ease 0.2s both; }
+  .pillars-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gray);
+    text-align: center; margin-bottom: 14px;
+  }
+
+  @keyframes card-in {
+    from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
-  .live-dot {
-    width: 6px; height: 6px;
-    background: var(--green);
-    border-radius: 50%;
-    flex-shrink: 0;
-    animation: pulse-dot 1.2s infinite;
+  @keyframes desc-in {
+    from { opacity: 0; transform: translateX(-8px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pulse-ring {
+    0%   { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.1); opacity: 0; }
+  }
+  @keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
 
-  .live-text {
-    font-size: 11px;
-    font-weight: 600;
-    color: #86efac;
-    flex: 1;
-    text-align: left;
+  .pillars {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px; margin-bottom: 12px;
   }
-
-  .live-time {
-    font-size: 10px;
-    color: var(--gray);
-    font-weight: 500;
-    flex-shrink: 0;
+  .pillar {
+    position: relative; border-radius: 16px;
+    border: 1px solid var(--border); background: var(--surface);
+    padding: 20px 10px 18px; cursor: pointer; text-align: center;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    overflow: hidden; animation: card-in 0.5s cubic-bezier(0.4,0,0.2,1) both;
   }
+  .pillar:nth-child(1) { animation-delay: 0.15s; }
+  .pillar:nth-child(2) { animation-delay: 0.28s; }
+  .pillar:nth-child(3) { animation-delay: 0.41s; }
 
-  /* ── PROVA SOCIAL ── */
-  .social-proof {
-    margin-top: 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  .pillar-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    border-radius: 16px 16px 0 0; transform-origin: left;
+    transform: scaleX(0); transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
   }
+  .p1 .pillar-bar { background: #F5680A; }
+  .p2 .pillar-bar { background: #1D9E75; }
+  .p3 .pillar-bar { background: #7F77DD; }
+  .pillar.active .pillar-bar { transform: scaleX(1); }
 
-  .avatars { display: flex; flex-shrink: 0; }
-
-  .avatar {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    border: 2px solid var(--bg);
-    margin-left: -8px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    color: #fff;
+  .pillar::after {
+    content: ''; position: absolute; inset: 0; border-radius: 16px;
+    opacity: 0; transition: opacity 0.35s; pointer-events: none;
   }
+  .p1::after { background: radial-gradient(circle at 50% 110%, rgba(245,104,10,0.12) 0%, transparent 60%); }
+  .p2::after { background: radial-gradient(circle at 50% 110%, rgba(29,158,117,0.12) 0%, transparent 60%); }
+  .p3::after { background: radial-gradient(circle at 50% 110%, rgba(127,119,221,0.12) 0%, transparent 60%); }
+  .pillar.active::after { opacity: 1; }
+  .pillar.active { transform: translateY(-4px); }
+  .p1.active { border-color: #F5680A; box-shadow: 0 8px 28px rgba(245,104,10,0.18); }
+  .p2.active { border-color: #1D9E75; box-shadow: 0 8px 28px rgba(29,158,117,0.18); }
+  .p3.active { border-color: #7F77DD; box-shadow: 0 8px 28px rgba(127,119,221,0.18); }
+  .pillar:not(.active):hover { border-color: #333; transform: translateY(-2px); }
 
-  .avatar:first-child { margin-left: 0; }
-  .avatar-1    { background: #e84393; }
-  .avatar-2    { background: #4393e8; }
-  .avatar-3    { background: #43e87a; }
-  .avatar-4    { background: #e8a443; }
-  .avatar-more { background: var(--surface2); border-color: var(--border); color: var(--gray); font-size: 9px; font-weight: 800; }
-
-  .social-text {
-    font-size: 11px;
-    color: var(--gray-light);
-    font-weight: 600;
-    line-height: 1.4;
+  .icon-wrap {
+    width: 46px; height: 46px; border-radius: 12px;
+    margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
+    position: relative; transition: transform 0.25s;
   }
+  .pillar.active .icon-wrap { transform: scale(1.1); }
+  .p1 .icon-wrap { background: rgba(245,104,10,0.12); }
+  .p2 .icon-wrap { background: rgba(29,158,117,0.12); }
+  .p3 .icon-wrap { background: rgba(127,119,221,0.12); }
 
-  .social-text strong { color: var(--orange); }
+  .ring { position: absolute; inset: 0; border-radius: 12px; opacity: 0; }
+  .p1 .ring { border: 2px solid #F5680A; }
+  .p2 .ring { border: 2px solid #1D9E75; }
+  .p3 .ring { border: 2px solid #7F77DD; }
+  .pillar.active .ring { animation: pulse-ring 1.6s ease-out infinite; }
 
-  /* ── CREDIBILITY ── */
-  .credibility {
-    margin-top: 24px;
-    text-align: center;
-    animation: fadeUp 0.5s ease 0.25s both;
+  .pillar-num { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: var(--gray); margin-bottom: 8px; }
+  .pillar-name { font-size: 11px; font-weight: 700; color: var(--gray-light); line-height: 1.4; }
+
+  .detail {
+    border-radius: 14px; background: var(--surface);
+    border: 1px solid var(--border); border-left: 3px solid transparent;
+    padding: 20px 18px; transition: border-color 0.3s; margin-bottom: 10px;
   }
+  .detail.c1 { border-left-color: #F5680A; }
+  .detail.c2 { border-left-color: #1D9E75; }
+  .detail.c3 { border-left-color: #7F77DD; }
+  .detail-inner { animation: desc-in 0.32s ease both; }
+  .detail-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 5px; }
+  .c1 .detail-label { color: #F5680A; }
+  .c2 .detail-label { color: #1D9E75; }
+  .c3 .detail-label { color: #7F77DD; }
+  .detail-title { font-size: 17px; font-weight: 800; color: var(--white); margin-bottom: 8px; letter-spacing: -0.02em; }
+  .detail-desc { font-size: 13px; color: var(--gray); line-height: 1.8; font-weight: 500; }
+  .cursor {
+    display: inline-block; width: 2px; height: 13px;
+    margin-left: 1px; vertical-align: middle; border-radius: 1px;
+    animation: cursor-blink 0.9s step-start infinite;
+  }
+  .c1 .cursor { background: #F5680A; }
+  .c2 .cursor { background: #1D9E75; }
+  .c3 .cursor { background: #7F77DD; }
 
+  .auto-bar { height: 2px; background: var(--border); border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
+  .auto-fill { height: 100%; border-radius: 2px; width: 0%; transition: width linear; }
+  .c1-fill { background: #F5680A; }
+  .c2-fill { background: #1D9E75; }
+  .c3-fill { background: #7F77DD; }
+
+  .nav { display: flex; justify-content: center; gap: 6px; }
+  .nav-dot {
+    height: 6px; width: 6px; border-radius: 3px; background: var(--border);
+    cursor: pointer; transition: width 0.35s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+  }
+  .nav-dot.active { width: 22px; }
+  .nd1.active { background: #F5680A; }
+  .nd2.active { background: #1D9E75; }
+  .nd3.active { background: #7F77DD; }
+
+  /* CREDIBILITY */
+  .credibility { margin-top: 24px; text-align: center; animation: fadeUp 0.5s ease 0.3s both; }
   .cred-stats { display: flex; justify-content: center; }
-
-  .cred-item {
-    flex: 1;
-    padding: 13px 8px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-  }
-
+  .cred-item { flex: 1; padding: 13px 8px; border: 1px solid var(--border); background: var(--surface); }
   .cred-item:first-child { border-radius: 10px 0 0 10px; }
   .cred-item:last-child  { border-radius: 0 10px 10px 0; border-left: none; }
   .cred-item:not(:first-child):not(:last-child) { border-left: none; }
-
-  .cred-value {
-    font-size: 17px;
-    font-weight: 900;
-    color: var(--orange);
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 3px;
-  }
-
-  .cred-desc {
-    font-size: 9px;
-    font-weight: 600;
-    color: var(--gray);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-  }
+  .cred-value { font-size: 17px; font-weight: 900; color: var(--orange); letter-spacing: -0.03em; line-height: 1; margin-bottom: 3px; }
+  .cred-desc { font-size: 9px; font-weight: 600; color: var(--gray); letter-spacing: 0.02em; text-transform: uppercase; }
 
   .footer {
-    margin-top: 32px;
-    padding-top: 16px;
+    margin-top: 32px; padding-top: 16px;
     border-top: 1px solid var(--border);
-    text-align: center;
-    font-size: 10px;
-    color: var(--gray);
-    font-weight: 500;
+    text-align: center; font-size: 10px; color: var(--gray); font-weight: 500;
   }
 </style>
 </head>
@@ -521,60 +324,41 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
 
   <!-- HERO -->
   <div class="hero">
-    <div class="badge">Masterclass Online e Gratuita</div>
-    <h1>Estruturação Comercial<br>de <span>Alta Performance</span></h1>
+    <div class="badge">Reunião Online · Gratuito · 24/03</div>
+
+    <h1>Acesse os <span>bastidores</span> do modelo comercial que já gerou mais de <span>R$500MM</span> em receita para empresas parceiras</h1>
+
     <p class="hero-sub">
-      Entenda o modelo comercial que gerou <strong>mais de R$500 milhões em vendas</strong> para empresas.
+      Canais de aquisição, processo comercial e construção de oferta. <strong>Quem ajusta os três cresce. Quem ignora, estagna.</strong> Vou mostrar ao vivo como aplicar esse modelo no seu negócio.
     </p>
+
     <div class="event-info">
       <div class="event-item">📅 Terça-feira (24/03)</div>
       <div class="event-divider"></div>
       <div class="event-item">🕛 12h00</div>
       <div class="event-divider"></div>
-      <div class="event-item">💻 Online e Gratuito</div>
+      <div class="event-item">💻 Online</div>
+    </div>
+
+    <a href="https://chat.whatsapp.com/Iwi10qePQ49G6L6Z9wo7KU"
+       class="btn-whatsapp"
+       id="whatsapp-btn"
+       onclick="fbq('track', 'Lead');">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Entrar no grupo agora
+    </a>
+
+    <span class="btn-sub">Gratuito · O link da reunião chega pelo grupo</span>
+
+    <div class="urgency-note">
+      <div class="urgency-dot"></div>
+      Vagas limitadas — reunião fechada para donos de empresa
     </div>
   </div>
 
-  <!-- CTA -->
-  <div class="cta-section">
-    <div class="cta-card">
-      <div class="cta-card-title">Garanta seu acesso gratuito</div>
-      <div class="cta-card-sub">Acesse o grupo oficial agora e confirme presença:</div>
 
-      <a href="https://chat.whatsapp.com/Iwi10qePQ49G6L6Z9wo7KU"
-         class="btn-whatsapp"
-         id="whatsapp-btn"
-         onclick="fbq('track', 'Lead');">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Entrar no grupo oficial
-      </a>
-
-      <div class="btn-sub">100% gratuito · Sem compromisso</div>
-
-      <!-- NOTIFICAÇÃO AO VIVO -->
-      <div class="live-notification" id="live-notif">
-        <div class="live-dot"></div>
-        <div class="live-text" id="live-notif-text">Carlos de São Paulo acabou de confirmar acesso</div>
-        <div class="live-time">agora</div>
-      </div>
-    </div>
-
-    <!-- PROVA SOCIAL -->
-    <div class="social-proof">
-      <div class="avatars">
-        <div class="avatar avatar-1">M</div>
-        <div class="avatar avatar-2">R</div>
-        <div class="avatar avatar-3">A</div>
-        <div class="avatar avatar-4">L</div>
-        <div class="avatar avatar-more" id="avatar-more">+74</div>
-      </div>
-      <div class="social-text">
-        <strong id="social-count">78 pessoas</strong> já garantiram o acesso nas últimas horas. Não fique de fora!
-      </div>
-    </div>
-  </div>
 
   <!-- CREDIBILIDADE -->
   <div class="credibility">
@@ -586,48 +370,8 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
   </div>
 
   <div class="footer">© 2026 Branches Performance · Todos os direitos reservados</div>
-
 </div>
 
-<script>
-  const names = [
-    'Carlos de São Paulo', 'Ana de Curitiba', 'Rodrigo de BH',
-    'Fernanda do Rio', 'Thiago de Brasília', 'Juliana de Fortaleza',
-    'Marcos de Porto Alegre', 'Camila de Recife', 'Bruno de Goiânia',
-    'Larissa de Salvador', 'Diego de Florianópolis', 'Patrícia de Manaus',
-    'Rafael de Campinas', 'Isabela de Natal', 'Lucas de Belém'
-  ];
-
-  let confirmed = 78;
-  let notifIndex = 0;
-
-  function showNotification() {
-    confirmed++;
-    const remaining = 100 - confirmed;
-
-    document.getElementById('vagas-bar').style.width = confirmed + '%';
-    document.getElementById('vagas-count-label').textContent = confirmed + ' de 100';
-    document.getElementById('vagas-restantes').textContent = remaining + ' acessos restantes';
-    document.getElementById('social-count').textContent = confirmed + ' pessoas';
-    document.getElementById('avatar-more').textContent = '+' + (confirmed - 4);
-
-    const name = names[notifIndex % names.length];
-    notifIndex++;
-    document.getElementById('live-notif-text').textContent = name + ' acabou de confirmar acesso';
-
-    const notif = document.getElementById('live-notif');
-    notif.style.animation = 'none';
-    notif.offsetHeight;
-    notif.style.animation = 'notif-in 0.4s ease';
-  }
-
-  function scheduleNext() {
-    const delay = 18000 + Math.random() * 22000;
-    setTimeout(() => { showNotification(); scheduleNext(); }, delay);
-  }
-
-  scheduleNext();
-</script>
 
 </body>
 </html>
