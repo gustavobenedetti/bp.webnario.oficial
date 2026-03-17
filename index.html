@@ -38,6 +38,8 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
     --white: #F5F5F5;
     --gray: #888888;
     --gray-light: #CCCCCC;
+    --green: #25D366;
+    --red: #ef4444;
     --font: 'Montserrat', sans-serif;
   }
 
@@ -59,6 +61,7 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
     padding: 0 20px 80px;
   }
 
+  /* ── TOPBAR ── */
   .topbar {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -87,8 +90,8 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
   }
 
   @keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
   }
 
   .topbar-text {
@@ -101,24 +104,113 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
 
   .topbar-text span { color: var(--orange); }
 
+  /* ── BARRA DE ACESSOS ── */
+  .vagas-banner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vagas-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    pointer-events: none;
+    animation: border-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes border-pulse {
+    0%, 100% { box-shadow: inset 0 0 0 1px rgba(239,68,68,0.0); }
+    50%       { box-shadow: inset 0 0 0 1px rgba(239,68,68,0.5); }
+  }
+
+  .vagas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .vagas-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-light);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .vagas-count {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--red);
+    animation: count-flash 2s ease-in-out infinite;
+  }
+
+  @keyframes count-flash {
+    0%, 80%, 100% { opacity: 1; }
+    90% { opacity: 0.3; }
+  }
+
+  .vagas-bar-bg {
+    background: var(--surface2);
+    border-radius: 100px;
+    height: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .vagas-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #b91c1c, #ef4444);
+    width: 78%;
+    position: relative;
+    animation: bar-glow 1.5s ease-in-out infinite alternate;
+    transition: width 1s ease;
+  }
+
+  .vagas-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent 60%, rgba(255,255,255,0.35) 80%, transparent 100%);
+    animation: bar-shine 2s linear infinite;
+  }
+
+  @keyframes bar-shine {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes bar-glow {
+    from { box-shadow: 0 0 6px rgba(239,68,68,0.5); }
+    to   { box-shadow: 0 0 16px rgba(239,68,68,0.9); }
+  }
+
+  .vagas-sub {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gray);
+    margin-top: 6px;
+    text-align: right;
+  }
+
+  /* ── HERO ── */
   .hero {
-    padding: 36px 0 20px;
+    padding: 24px 0 16px;
     text-align: center;
     animation: fadeUp 0.5s ease both;
   }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .brand {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 14px;
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .badge {
@@ -135,6 +227,12 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin-bottom: 16px;
+    animation: badge-glow 2.5s ease-in-out infinite;
+  }
+
+  @keyframes badge-glow {
+    0%, 100% { box-shadow: 0 0 0px rgba(245,104,10,0); border-color: rgba(245,104,10,0.25); }
+    50%       { box-shadow: 0 0 12px rgba(245,104,10,0.35); border-color: rgba(245,104,10,0.6); }
   }
 
   .hero h1 {
@@ -176,90 +274,56 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
 
   .event-divider { width: 1px; height: 12px; background: var(--border); }
 
-  .form-section { animation: fadeUp 0.5s ease 0.15s both; }
+  /* ── CTA SECTION ── */
+  .cta-section { animation: fadeUp 0.5s ease 0.15s both; }
 
-  .form-card {
+  .cta-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 24px 20px;
     position: relative;
     overflow: hidden;
+    text-align: center;
   }
 
-  .form-card::before {
+  .cta-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--orange), transparent);
+    animation: top-sweep 2s linear infinite;
+    background-size: 200% 100%;
   }
 
-  .form-title {
+  @keyframes top-sweep {
+    0%   { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .cta-card-title {
     font-size: 16px;
     font-weight: 800;
     color: var(--white);
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     letter-spacing: -0.02em;
   }
 
-  .form-subtitle {
+  .cta-card-sub {
     font-size: 12px;
     color: var(--gray);
     font-weight: 500;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
-  .form-group { margin-bottom: 11px; }
-
-  .form-label {
-    display: block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 5px;
-  }
-
-  .form-input {
+  .btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 14px;
-    font-family: var(--font);
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--white);
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    -webkit-appearance: none;
-  }
-
-  .form-input::placeholder { color: #3A3A3A; }
-
-  .form-input:focus {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px var(--orange-dim);
-  }
-
-  .form-error {
-    font-size: 11px;
-    color: #FF6B6B;
-    margin-top: 4px;
-    display: none;
-    font-weight: 600;
-  }
-
-  .cta-wrapper {
-    margin-top: 8px;
-    text-align: center;
-  }
-
-  .btn-primary {
-    width: 100%;
-    background: var(--orange);
+    background: #25D366;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -268,21 +332,40 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
     font-size: 14px;
     font-weight: 800;
     cursor: pointer;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px rgba(245,104,10,0.3);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    display: block;
+    animation: btn-attention 4s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
   }
 
-  .btn-primary:hover {
-    background: var(--orange-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 28px rgba(245,104,10,0.4);
+  .btn-whatsapp::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+    animation: btn-shine 3s linear infinite;
   }
 
-  .btn-primary:active { transform: translateY(0); }
-  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  @keyframes btn-shine {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes btn-attention {
+    0%, 60%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.3); transform: scale(1); }
+    65%            { box-shadow: 0 4px 30px rgba(37,211,102,0.7); transform: scale(1.015); }
+    70%            { transform: scale(0.995); }
+    75%            { transform: scale(1.01); }
+    80%            { transform: scale(1); box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
+  }
+
+  .btn-whatsapp:hover  { background: #1ebe5d; transform: translateY(-1px) scale(1.01); }
+  .btn-whatsapp:active { transform: translateY(0) scale(0.99); }
+  .btn-whatsapp svg    { flex-shrink: 0; }
 
   .btn-sub {
     font-size: 9px;
@@ -290,22 +373,98 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--gray);
-    margin-top: 8px;
+    margin-top: 10px;
   }
 
+  /* ── NOTIFICAÇÃO AO VIVO ── */
+  .live-notification {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(37,211,102,0.06);
+    border: 1px solid rgba(37,211,102,0.18);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-top: 12px;
+    animation: notif-in 0.4s ease;
+  }
+
+  @keyframes notif-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .live-dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse-dot 1.2s infinite;
+  }
+
+  .live-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: #86efac;
+    flex: 1;
+    text-align: left;
+  }
+
+  .live-time {
+    font-size: 10px;
+    color: var(--gray);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  /* ── PROVA SOCIAL ── */
+  .social-proof {
+    margin-top: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatars { display: flex; flex-shrink: 0; }
+
+  .avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    margin-left: -8px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .avatar:first-child { margin-left: 0; }
+  .avatar-1    { background: #e84393; }
+  .avatar-2    { background: #4393e8; }
+  .avatar-3    { background: #43e87a; }
+  .avatar-4    { background: #e8a443; }
+  .avatar-more { background: var(--surface2); border-color: var(--border); color: var(--gray); font-size: 9px; font-weight: 800; }
+
+  .social-text {
+    font-size: 11px;
+    color: var(--gray-light);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .social-text strong { color: var(--orange); }
+
+  /* ── CREDIBILITY ── */
   .credibility {
     margin-top: 24px;
     text-align: center;
     animation: fadeUp 0.5s ease 0.25s both;
-  }
-
-  .cred-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 10px;
   }
 
   .cred-stats { display: flex; justify-content: center; }
@@ -318,7 +477,7 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
   }
 
   .cred-item:first-child { border-radius: 10px 0 0 10px; }
-  .cred-item:last-child { border-radius: 0 10px 10px 0; border-left: none; }
+  .cred-item:last-child  { border-radius: 0 10px 10px 0; border-left: none; }
   .cred-item:not(:first-child):not(:last-child) { border-left: none; }
 
   .cred-value {
@@ -354,64 +513,71 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-dot"></div>
-    <span class="topbar-text"><span>Segunda-feira · 20h</span> · Vagas limitadas · 09/03</span></span>
+    <span class="topbar-text"><span>Terça-feira · 12h</span> · Acessos limitados · 24/03</span>
   </div>
 </div>
 
 <div class="wrapper">
 
+  <!-- HERO -->
   <div class="hero">
-    <div class="brand">Branches Performance</div>
-    <div class="badge">Aula Online Gratuita</div>
+    <div class="badge">Masterclass Online e Gratuita</div>
     <h1>Estruturação Comercial<br>de <span>Alta Performance</span></h1>
     <p class="hero-sub">
       Entenda o modelo comercial que gerou <strong>mais de R$500 milhões em vendas</strong> para empresas.
     </p>
     <div class="event-info">
-      <div class="event-item">📅 Segunda-feira (09/03)</div>
+      <div class="event-item">📅 Terça-feira (24/03)</div>
       <div class="event-divider"></div>
-      <div class="event-item">🕗 20h00</div>
+      <div class="event-item">🕛 12h00</div>
       <div class="event-divider"></div>
       <div class="event-item">💻 Online e Gratuito</div>
     </div>
   </div>
 
-  <div class="form-section">
-    <div class="form-card">
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-card">
+      <div class="cta-card-title">Garanta seu acesso gratuito</div>
+      <div class="cta-card-sub">Acesse o grupo oficial agora e confirme presença:</div>
 
-      <div class="form-title">Garanta sua vaga gratuita</div>
-      <div class="form-subtitle">Preencha os dados abaixo para confirmar presença:</div>
+      <a href="https://chat.whatsapp.com/Iwi10qePQ49G6L6Z9wo7KU"
+         class="btn-whatsapp"
+         id="whatsapp-btn"
+         onclick="fbq('track', 'Lead');">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Entrar no grupo oficial
+      </a>
 
-      <form id="capture-form" novalidate>
-        <div class="form-group">
-          <label class="form-label" for="nome">Nome completo</label>
-          <input class="form-input" type="text" id="nome" placeholder="Seu nome" autocomplete="name" required>
-          <div class="form-error" id="err-nome">Por favor, informe seu nome</div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="telefone">WhatsApp</label>
-          <input class="form-input" type="tel" id="telefone" placeholder="(00) 00000-0000" autocomplete="tel" required>
-          <div class="form-error" id="err-telefone">Por favor, informe seu WhatsApp</div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="area">Área de atuação</label>
-          <input class="form-input" type="text" id="area" placeholder="Ex: Tecnologia, Serviços, Varejo..." required>
-          <div class="form-error" id="err-area">Por favor, informe sua área de atuação</div>
-        </div>
+      <div class="btn-sub">100% gratuito · Sem compromisso</div>
 
-        <div class="cta-wrapper">
-          <button type="submit" class="btn-primary" id="submit-btn">
-            Quero garantir minha vaga gratuita! →
-          </button>
-          <div class="btn-sub">Acesse o grupo exclusivo</div>
-        </div>
-      </form>
+      <!-- NOTIFICAÇÃO AO VIVO -->
+      <div class="live-notification" id="live-notif">
+        <div class="live-dot"></div>
+        <div class="live-text" id="live-notif-text">Carlos de São Paulo acabou de confirmar acesso</div>
+        <div class="live-time">agora</div>
+      </div>
+    </div>
 
+    <!-- PROVA SOCIAL -->
+    <div class="social-proof">
+      <div class="avatars">
+        <div class="avatar avatar-1">M</div>
+        <div class="avatar avatar-2">R</div>
+        <div class="avatar avatar-3">A</div>
+        <div class="avatar avatar-4">L</div>
+        <div class="avatar avatar-more" id="avatar-more">+74</div>
+      </div>
+      <div class="social-text">
+        <strong id="social-count">78 pessoas</strong> já garantiram o acesso nas últimas horas. Não fique de fora!
+      </div>
     </div>
   </div>
 
+  <!-- CREDIBILIDADE -->
   <div class="credibility">
-    <div class="cred-label">Branches Performance</div>
     <div class="cred-stats">
       <div class="cred-item"><div class="cred-value">+70</div><div class="cred-desc">Empresas</div></div>
       <div class="cred-item"><div class="cred-value">R$500M</div><div class="cred-desc">Em negócios</div></div>
@@ -424,75 +590,44 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
 </div>
 
 <script>
-  // ========================
-  // WEBHOOK — EDITAR AQUI SE NECESSÁRIO
-  // ========================
-  const WEBHOOK_URL = 'https://api.datacrazy.io/v1/crm/api/crm/flows/webhooks/23936e91-df66-47b0-b884-78dd058b1c69/b20fc088-9cce-472b-9bc6-2e4e16c71e98';
+  const names = [
+    'Carlos de São Paulo', 'Ana de Curitiba', 'Rodrigo de BH',
+    'Fernanda do Rio', 'Thiago de Brasília', 'Juliana de Fortaleza',
+    'Marcos de Porto Alegre', 'Camila de Recife', 'Bruno de Goiânia',
+    'Larissa de Salvador', 'Diego de Florianópolis', 'Patrícia de Manaus',
+    'Rafael de Campinas', 'Isabela de Natal', 'Lucas de Belém'
+  ];
 
-  // ========================
-  // LINK DO GRUPO — EDITAR AQUI SE NECESSÁRIO
-  // ========================
-  const WHATSAPP_GROUP = 'https://chat.whatsapp.com/Iwi10qePQ49G6L6Z9wo7KU';
+  let confirmed = 78;
+  let notifIndex = 0;
 
-  // PHONE MASK
-  document.getElementById('telefone').addEventListener('input', function(e) {
-    let v = e.target.value.replace(/\D/g,'').slice(0,11);
-    if (v.length >= 7) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-    else if (v.length >= 3) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-    else if (v.length >= 1) v = `(${v}`;
-    e.target.value = v;
-  });
+  function showNotification() {
+    confirmed++;
+    const remaining = 100 - confirmed;
 
-  // SUBMIT — dispara Lead no Pixel, envia webhook e redireciona
-  document.getElementById('capture-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
+    document.getElementById('vagas-bar').style.width = confirmed + '%';
+    document.getElementById('vagas-count-label').textContent = confirmed + ' de 100';
+    document.getElementById('vagas-restantes').textContent = remaining + ' acessos restantes';
+    document.getElementById('social-count').textContent = confirmed + ' pessoas';
+    document.getElementById('avatar-more').textContent = '+' + (confirmed - 4);
 
-    const nome = document.getElementById('nome').value.trim();
-    const telefone = document.getElementById('telefone').value.trim();
-    const area = document.getElementById('area').value.trim();
-    let valid = true;
+    const name = names[notifIndex % names.length];
+    notifIndex++;
+    document.getElementById('live-notif-text').textContent = name + ' acabou de confirmar acesso';
 
-    document.getElementById('err-nome').style.display = nome ? 'none' : 'block';
-    if (!nome) valid = false;
-    document.getElementById('err-telefone').style.display = (telefone && telefone.replace(/\D/g,'').length >= 10) ? 'none' : 'block';
-    if (!telefone || telefone.replace(/\D/g,'').length < 10) valid = false;
-    document.getElementById('err-area').style.display = area ? 'none' : 'block';
-    if (!area) valid = false;
-    if (!valid) return;
+    const notif = document.getElementById('live-notif');
+    notif.style.animation = 'none';
+    notif.offsetHeight;
+    notif.style.animation = 'notif-in 0.4s ease';
+  }
 
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    btn.textContent = 'Confirmando vaga...';
+  function scheduleNext() {
+    const delay = 18000 + Math.random() * 22000;
+    setTimeout(() => { showNotification(); scheduleNext(); }, delay);
+  }
 
-    // ========================
-    // DISPARA EVENTO LEAD NO PIXEL
-    // ========================
-    fbq('track', 'Lead');
-
-    const p = new URLSearchParams(window.location.search);
-
-    // Envia para o webhook
-    fetch(WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        nome, telefone,
-        area_de_atuacao: area,
-        origem: 'webinario_branches',
-        data_cadastro: new Date().toISOString(),
-        utm_source: p.get('utm_source') || '',
-        utm_medium: p.get('utm_medium') || '',
-        utm_campaign: p.get('utm_campaign') || '',
-        utm_content: p.get('utm_content') || ''
-      }),
-      mode: 'no-cors'
-    }).catch(() => {});
-
-    // Redireciona para o grupo
-    setTimeout(() => {
-      window.location.href = WHATSAPP_GROUP;
-    }, 400);
-  });
+  scheduleNext();
 </script>
+
 </body>
 </html>
