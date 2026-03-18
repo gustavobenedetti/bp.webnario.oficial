@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acesse os Bastidores do Modelo Comercial · Branches Performance · 24/03</title>
+<title>O Modelo Comercial das Três Engrenagens · Branches Performance</title>
 
-<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,7 +20,6 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -30,285 +28,213 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
   :root {
     --bg: #0C0C0C;
     --surface: #141414;
-    --surface2: #1A1A1A;
     --border: #242424;
     --orange: #F5680A;
-    --orange-dim: rgba(245,104,10,0.10);
     --white: #F5F5F5;
-    --gray: #888888;
-    --gray-light: #CCCCCC;
+    --gray: #888;
+    --gray-light: #CCC;
     --green: #25D366;
     --red: #ef4444;
     --font: 'Montserrat', sans-serif;
   }
 
   html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: var(--font);
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
+  body { background: var(--bg); color: var(--white); font-family: var(--font); font-size: 15px; line-height: 1.6; min-height: 100vh; overflow-x: hidden; }
   .wrapper { max-width: 520px; margin: 0 auto; padding: 0 20px 80px; }
 
   /* TOPBAR */
-  .topbar {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 11px 20px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .topbar-inner {
-    max-width: 520px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .topbar-dot {
-    width: 7px; height: 7px;
-    background: var(--orange); border-radius: 50%;
-    animation: pulse-dot 2s infinite; flex-shrink: 0;
-  }
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.7); }
-  }
-  .topbar-text {
-    font-size: 11px; font-weight: 700;
-    color: var(--gray-light); letter-spacing: 0.04em; text-transform: uppercase;
-  }
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 11px 20px; text-align: center; position: sticky; top: 0; z-index: 100; }
+  .topbar-inner { max-width: 520px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .topbar-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+  .topbar-text { font-size: 11px; font-weight: 700; color: var(--gray-light); letter-spacing: 0.04em; text-transform: uppercase; }
   .topbar-text span { color: var(--orange); }
 
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
   /* HERO */
-  .hero {
-    padding: 32px 0 20px; text-align: center;
-    animation: fadeUp 0.5s ease both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--orange-dim);
-    border: 1px solid rgba(245,104,10,0.25);
-    border-radius: 100px; padding: 5px 14px;
-    font-size: 10px; font-weight: 700; color: var(--orange);
-    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px;
-  }
-  .hero h1 {
-    font-size: clamp(22px, 5.5vw, 32px);
-    font-weight: 900; line-height: 1.2;
-    letter-spacing: -0.03em; color: var(--white); margin-bottom: 16px;
-  }
-  .hero h1 span { color: var(--orange); }
-  .hero-sub {
-    font-size: 14px; color: var(--gray);
-    line-height: 1.75; max-width: 420px;
-    margin: 0 auto 24px; font-weight: 500;
-  }
-  .hero-sub strong { color: var(--gray-light); font-weight: 700; }
+  .hero { padding: 28px 0 0; text-align: center; animation: fadeUp .5s ease both; }
 
-  .event-info {
+  /* ── GEAR CARDS ── */
+  .gear-gallery { overflow: hidden; margin: 0 -20px 24px; padding-top: 12px; }
+  .gear-track { display: flex; gap: 10px; padding: 0 20px; transition: transform .55s cubic-bezier(.4,0,.2,1); will-change: transform; }
+
+  .gear-card {
+    flex: 0 0 140px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px 12px 16px; text-align: center;
+    position: relative; overflow: hidden; cursor: pointer;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+  }
+  .gear-card.gc1 { border-top: 2px solid #F5680A; }
+  .gear-card.gc2 { border-top: 2px solid #1D9E75; }
+  .gear-card.gc3 { border-top: 2px solid #7F77DD; }
+
+  /* partículas de fundo nos cards */
+  .gear-card::before {
+    content: ''; position: absolute; inset: 0; border-radius: 14px;
+    opacity: 0; transition: opacity .4s; pointer-events: none;
+  }
+  .gc1::before { background: radial-gradient(circle at 50% 120%, rgba(245,104,10,.18) 0%, transparent 65%); }
+  .gc2::before { background: radial-gradient(circle at 50% 120%, rgba(29,158,117,.18) 0%, transparent 65%); }
+  .gc3::before { background: radial-gradient(circle at 50% 120%, rgba(127,119,221,.18) 0%, transparent 65%); }
+  .gear-card.active::before { opacity: 1; }
+
+  /* scan line animada */
+  .gear-card::after {
+    content: ''; position: absolute; top: -100%; left: 0; right: 0; height: 40%;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,.04), transparent);
+    animation: scan 3s linear infinite; pointer-events: none;
+  }
+  .gc2::after { animation-delay: -1s; }
+  .gc3::after { animation-delay: -2s; }
+  @keyframes scan { 0%{top:-40%} 100%{top:140%} }
+
+  .gear-card.active { transform: translateY(-5px); }
+  .gc1.active { border-color: #F5680A; box-shadow: 0 10px 30px rgba(245,104,10,.25); }
+  .gc2.active { border-color: #1D9E75; box-shadow: 0 10px 30px rgba(29,158,117,.25); }
+  .gc3.active { border-color: #7F77DD; box-shadow: 0 10px 30px rgba(127,119,221,.25); }
+
+  .gear-icon {
+    width: 44px; height: 44px; margin: 0 auto 10px;
     display: flex; align-items: center; justify-content: center;
-    gap: 12px; flex-wrap: wrap; margin-bottom: 24px;
+    border-radius: 12px; position: relative;
   }
-  .event-item { font-size: 12px; font-weight: 600; color: var(--gray-light); }
-  .event-divider { width: 1px; height: 12px; background: var(--border); }
+  .gc1 .gear-icon { background: rgba(245,104,10,.12); }
+  .gc2 .gear-icon { background: rgba(29,158,117,.12); }
+  .gc3 .gear-icon { background: rgba(127,119,221,.12); }
 
-  /* BOTÃO */
-  .btn-whatsapp {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    width: 100%; max-width: 420px; margin: 0 auto 10px;
-    background: #25D366; color: #fff; border: none; border-radius: 10px;
+  /* anel pulsante no card ativo */
+  .gear-ring { position: absolute; inset: 0; border-radius: 12px; opacity: 0; }
+  .gc1 .gear-ring { border: 1.5px solid #F5680A; }
+  .gc2 .gear-ring { border: 1.5px solid #1D9E75; }
+  .gc3 .gear-ring { border: 1.5px solid #7F77DD; }
+  .gear-card.active .gear-ring { animation: ring-pulse 1.8s ease-out infinite; }
+  @keyframes ring-pulse { 0%{transform:scale(1);opacity:.8} 100%{transform:scale(2.2);opacity:0} }
+
+  @keyframes spin-cw  { from{transform:rotate(0deg)}  to{transform:rotate(360deg)} }
+  @keyframes spin-ccw { from{transform:rotate(0deg)}  to{transform:rotate(-360deg)} }
+  .gc1 .gear-svg { animation: spin-cw  7s linear infinite; }
+  .gc2 .gear-svg { animation: spin-ccw 9s linear infinite; }
+  .gc3 .gear-svg { animation: spin-cw 11s linear infinite; }
+  .gear-card.active .gear-svg { animation-duration: 2s !important; }
+
+  .gear-num { font-size: 9px; font-weight: 700; letter-spacing: .12em; color: var(--gray); margin-bottom: 6px; }
+  .gear-name { font-size: 11px; font-weight: 700; color: var(--gray-light); line-height: 1.35; }
+  .gc1.active .gear-name { color: #F5680A; }
+  .gc2.active .gear-name { color: #1D9E75; }
+  .gc3.active .gear-name { color: #7F77DD; }
+
+  /* progress bar */
+  .gear-progress { height: 2px; background: var(--border); border-radius: 2px; margin: 0 20px 10px; overflow: hidden; }
+  .gear-fill { height: 100%; border-radius: 2px; width: 0%; transition: width linear; }
+  .gf1 { background: #F5680A; }
+  .gf2 { background: #1D9E75; }
+  .gf3 { background: #7F77DD; }
+
+  .gear-dots { display: flex; justify-content: center; gap: 6px; margin-bottom: 4px; }
+  .gear-dot { height: 6px; width: 6px; border-radius: 3px; background: var(--border); cursor: pointer; transition: width .35s cubic-bezier(.4,0,.2,1), background .3s; }
+  .gear-dot.active { width: 20px; }
+  .gd1.active { background: #F5680A; }
+  .gd2.active { background: #1D9E75; }
+  .gd3.active { background: #7F77DD; }
+
+  /* ── TÍTULO ── */
+  .title-wrap { position: relative; margin-bottom: 18px; padding: 20px 0 16px; overflow: hidden; }
+
+  /* efeitos atrás do título */
+  .title-bg {
+    position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: 8px;
+  }
+  .title-bg-line {
+    position: absolute; left: -60%; width: 40%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,104,10,.5), transparent);
+    animation: sweep 3s linear infinite;
+  }
+  .title-bg-line:nth-child(2) { animation-delay: -1s; top: 40%; }
+  .title-bg-line:nth-child(3) { animation-delay: -2s; top: 70%; }
+  @keyframes sweep { 0%{left:-60%} 100%{left:160%} }
+
+  .title-bg-glow {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,104,10,.08) 0%, transparent 70%);
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+  @keyframes glow-pulse { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.3)} }
+
+  .hero-title-orange {
+    display: block; font-size: clamp(16px, 4vw, 22px); font-weight: 900;
+    color: var(--orange); text-transform: uppercase; letter-spacing: .02em;
+    line-height: 1.2; margin-bottom: 10px; position: relative; z-index: 1;
+  }
+  .hero-title-white {
+    display: block; font-size: clamp(15px, 3.5vw, 19px); font-weight: 700;
+    color: var(--white); line-height: 1.35; position: relative; z-index: 1;
+    letter-spacing: -.01em;
+  }
+
+  /* ── SUBTÍTULO VERDE ── */
+  .hero-sub {
+    font-size: 13px; color: #1D9E75; line-height: 1.7;
+    max-width: 420px; margin: 0 auto 22px; font-weight: 600;
+  }
+  .hero-sub strong { color: #25D366; }
+
+  /* ── PRÉ-BOTÃO AO VIVO ── */
+  .live-label {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 10px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 10px;
+  }
+  .live-dot {
+    width: 7px; height: 7px; background: var(--red); border-radius: 50%;
+    animation: pulse 1.2s infinite; flex-shrink: 0;
+  }
+
+  /* ── BOTÃO LARANJA ── */
+  .btn-main {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; max-width: 420px; margin: 0 auto 24px;
+    background: var(--orange); color: #fff; border: none; border-radius: 10px;
     padding: 16px; font-family: var(--font); font-size: 14px; font-weight: 800;
     cursor: pointer; text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-    text-transform: uppercase; letter-spacing: 0.02em;
-    animation: btn-attention 4s ease-in-out infinite;
+    text-transform: uppercase; letter-spacing: .02em;
     position: relative; overflow: hidden;
+    transition: background .2s, transform .15s;
   }
-  .btn-whatsapp::after {
-    content: ''; position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
-    animation: btn-shine 3s linear infinite;
+  .btn-main::after {
+    content: ''; position: absolute; top: 0; left: -100%; width: 55%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(37,211,102,.4), transparent);
+    animation: green-shine 2.2s linear infinite;
   }
-  @keyframes btn-shine {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
-  @keyframes btn-attention {
-    0%, 60%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.3); transform: scale(1); }
-    65%            { box-shadow: 0 4px 30px rgba(37,211,102,0.7); transform: scale(1.015); }
-    70%            { transform: scale(0.995); }
-    75%            { transform: scale(1.01); }
-    80%            { transform: scale(1); box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
-  }
-  .btn-whatsapp:hover  { background: #1ebe5d; transform: translateY(-1px) scale(1.01); }
-  .btn-whatsapp:active { transform: translateY(0) scale(0.99); }
-  .btn-whatsapp svg { flex-shrink: 0; }
+  @keyframes green-shine { 0%{left:-55%} 100%{left:155%} }
+  .btn-main:hover  { background: #D95A08; transform: translateY(-1px) scale(1.01); }
+  .btn-main:active { transform: translateY(0) scale(.99); }
 
-  .btn-sub {
-    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--gray);
-    text-align: center; margin-bottom: 12px; display: block;
+  /* ── PARA QUEM ── */
+  .for-whom {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid var(--orange);
+    border-radius: 12px; padding: 18px 16px; margin: 0 auto 24px; max-width: 420px;
   }
+  .for-whom-label {
+    font-size: 10px; font-weight: 800; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
+  }
+  .for-whom-tags { display: flex; flex-direction: column; gap: 8px; }
+  .tag {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 600; color: var(--gray-light);
+  }
+  .tag-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
 
-  /* URGENCY */
-  .urgency-note {
-    display: flex; align-items: center; justify-content: center; gap: 6px;
-    font-size: 11px; font-weight: 600; color: var(--red); margin-bottom: 32px;
-  }
-  .urgency-dot {
-    width: 6px; height: 6px; background: var(--red); border-radius: 50%;
-    animation: pulse-dot 1.5s infinite; flex-shrink: 0;
-  }
+  /* urgency */
+  .urgency-note { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--red); margin-bottom: 28px; }
+  .urgency-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 1.5s infinite; flex-shrink: 0; }
 
-  /* PILLARS */
-  .pillars-section { margin-bottom: 28px; animation: fadeUp 0.5s ease 0.2s both; }
-  .pillars-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--gray);
-    text-align: center; margin-bottom: 14px;
-  }
-
-  @keyframes card-in {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes desc-in {
-    from { opacity: 0; transform: translateX(-8px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-  @keyframes pulse-ring {
-    0%   { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(2.1); opacity: 0; }
-  }
-  @keyframes cursor-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  .pillars {
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px; margin-bottom: 12px;
-  }
-  .pillar {
-    position: relative; border-radius: 16px;
-    border: 1px solid var(--border); background: var(--surface);
-    padding: 20px 10px 18px; cursor: pointer; text-align: center;
-    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-    overflow: hidden; animation: card-in 0.5s cubic-bezier(0.4,0,0.2,1) both;
-  }
-  .pillar:nth-child(1) { animation-delay: 0.15s; }
-  .pillar:nth-child(2) { animation-delay: 0.28s; }
-  .pillar:nth-child(3) { animation-delay: 0.41s; }
-
-  .pillar-bar {
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    border-radius: 16px 16px 0 0; transform-origin: left;
-    transform: scaleX(0); transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
-  }
-  .p1 .pillar-bar { background: #F5680A; }
-  .p2 .pillar-bar { background: #1D9E75; }
-  .p3 .pillar-bar { background: #7F77DD; }
-  .pillar.active .pillar-bar { transform: scaleX(1); }
-
-  .pillar::after {
-    content: ''; position: absolute; inset: 0; border-radius: 16px;
-    opacity: 0; transition: opacity 0.35s; pointer-events: none;
-  }
-  .p1::after { background: radial-gradient(circle at 50% 110%, rgba(245,104,10,0.12) 0%, transparent 60%); }
-  .p2::after { background: radial-gradient(circle at 50% 110%, rgba(29,158,117,0.12) 0%, transparent 60%); }
-  .p3::after { background: radial-gradient(circle at 50% 110%, rgba(127,119,221,0.12) 0%, transparent 60%); }
-  .pillar.active::after { opacity: 1; }
-  .pillar.active { transform: translateY(-4px); }
-  .p1.active { border-color: #F5680A; box-shadow: 0 8px 28px rgba(245,104,10,0.18); }
-  .p2.active { border-color: #1D9E75; box-shadow: 0 8px 28px rgba(29,158,117,0.18); }
-  .p3.active { border-color: #7F77DD; box-shadow: 0 8px 28px rgba(127,119,221,0.18); }
-  .pillar:not(.active):hover { border-color: #333; transform: translateY(-2px); }
-
-  .icon-wrap {
-    width: 46px; height: 46px; border-radius: 12px;
-    margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
-    position: relative; transition: transform 0.25s;
-  }
-  .pillar.active .icon-wrap { transform: scale(1.1); }
-  .p1 .icon-wrap { background: rgba(245,104,10,0.12); }
-  .p2 .icon-wrap { background: rgba(29,158,117,0.12); }
-  .p3 .icon-wrap { background: rgba(127,119,221,0.12); }
-
-  .ring { position: absolute; inset: 0; border-radius: 12px; opacity: 0; }
-  .p1 .ring { border: 2px solid #F5680A; }
-  .p2 .ring { border: 2px solid #1D9E75; }
-  .p3 .ring { border: 2px solid #7F77DD; }
-  .pillar.active .ring { animation: pulse-ring 1.6s ease-out infinite; }
-
-  .pillar-num { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: var(--gray); margin-bottom: 8px; }
-  .pillar-name { font-size: 11px; font-weight: 700; color: var(--gray-light); line-height: 1.4; }
-
-  .detail {
-    border-radius: 14px; background: var(--surface);
-    border: 1px solid var(--border); border-left: 3px solid transparent;
-    padding: 20px 18px; transition: border-color 0.3s; margin-bottom: 10px;
-  }
-  .detail.c1 { border-left-color: #F5680A; }
-  .detail.c2 { border-left-color: #1D9E75; }
-  .detail.c3 { border-left-color: #7F77DD; }
-  .detail-inner { animation: desc-in 0.32s ease both; }
-  .detail-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 5px; }
-  .c1 .detail-label { color: #F5680A; }
-  .c2 .detail-label { color: #1D9E75; }
-  .c3 .detail-label { color: #7F77DD; }
-  .detail-title { font-size: 17px; font-weight: 800; color: var(--white); margin-bottom: 8px; letter-spacing: -0.02em; }
-  .detail-desc { font-size: 13px; color: var(--gray); line-height: 1.8; font-weight: 500; }
-  .cursor {
-    display: inline-block; width: 2px; height: 13px;
-    margin-left: 1px; vertical-align: middle; border-radius: 1px;
-    animation: cursor-blink 0.9s step-start infinite;
-  }
-  .c1 .cursor { background: #F5680A; }
-  .c2 .cursor { background: #1D9E75; }
-  .c3 .cursor { background: #7F77DD; }
-
-  .auto-bar { height: 2px; background: var(--border); border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
-  .auto-fill { height: 100%; border-radius: 2px; width: 0%; transition: width linear; }
-  .c1-fill { background: #F5680A; }
-  .c2-fill { background: #1D9E75; }
-  .c3-fill { background: #7F77DD; }
-
-  .nav { display: flex; justify-content: center; gap: 6px; }
-  .nav-dot {
-    height: 6px; width: 6px; border-radius: 3px; background: var(--border);
-    cursor: pointer; transition: width 0.35s cubic-bezier(0.4,0,0.2,1), background 0.3s;
-  }
-  .nav-dot.active { width: 22px; }
-  .nd1.active { background: #F5680A; }
-  .nd2.active { background: #1D9E75; }
-  .nd3.active { background: #7F77DD; }
-
-  /* CREDIBILITY */
-  .credibility { margin-top: 24px; text-align: center; animation: fadeUp 0.5s ease 0.3s both; }
-  .cred-stats { display: flex; justify-content: center; }
-  .cred-item { flex: 1; padding: 13px 8px; border: 1px solid var(--border); background: var(--surface); }
-  .cred-item:first-child { border-radius: 10px 0 0 10px; }
-  .cred-item:last-child  { border-radius: 0 10px 10px 0; border-left: none; }
-  .cred-item:not(:first-child):not(:last-child) { border-left: none; }
-  .cred-value { font-size: 17px; font-weight: 900; color: var(--orange); letter-spacing: -0.03em; line-height: 1; margin-bottom: 3px; }
-  .cred-desc { font-size: 9px; font-weight: 600; color: var(--gray); letter-spacing: 0.02em; text-transform: uppercase; }
-
-  .footer {
-    margin-top: 32px; padding-top: 16px;
-    border-top: 1px solid var(--border);
-    text-align: center; font-size: 10px; color: var(--gray); font-weight: 500;
-  }
+  .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); text-align: center; font-size: 10px; color: var(--gray); font-weight: 500; }
 </style>
 </head>
 <body>
@@ -321,59 +247,140 @@ src="https://www.facebook.com/tr?id=1513806236936915&ev=PageView&noscript=1"
 </div>
 
 <div class="wrapper">
-
-  <!-- HERO -->
   <div class="hero">
-    <div class="badge">Reunião Online · Gratuito · 24/03</div>
 
-    <h1>Acesse os <span>bastidores</span> do modelo comercial que já gerou mais de <span>R$500MM</span> em receita para empresas parceiras</h1>
+    <!-- GALERIA ENGRENAGENS -->
+    <div class="gear-gallery">
+      <div class="gear-track" id="gear-track">
 
+        <div class="gear-card gc1 active" id="gc0">
+          <div class="gear-icon">
+            <div class="gear-ring"></div>
+            <svg class="gear-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F5680A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <div class="gear-num">01</div>
+          <div class="gear-name">Canais de aquisição</div>
+        </div>
+
+        <div class="gear-card gc2" id="gc1">
+          <div class="gear-icon">
+            <div class="gear-ring"></div>
+            <svg class="gear-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <div class="gear-num">02</div>
+          <div class="gear-name">Processo comercial</div>
+        </div>
+
+        <div class="gear-card gc3" id="gc2">
+          <div class="gear-icon">
+            <div class="gear-ring"></div>
+            <svg class="gear-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <div class="gear-num">03</div>
+          <div class="gear-name">Construção de oferta</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="gear-progress"><div class="gear-fill gf1" id="gear-fill"></div></div>
+    <div class="gear-dots">
+      <div class="gear-dot gd1 active" onclick="goTo(0)"></div>
+      <div class="gear-dot gd2" onclick="goTo(1)"></div>
+      <div class="gear-dot gd3" onclick="goTo(2)"></div>
+    </div>
+
+    <!-- TÍTULO -->
+    <div class="title-wrap">
+      <div class="title-bg">
+        <div class="title-bg-glow"></div>
+        <div class="title-bg-line" style="top:20%"></div>
+        <div class="title-bg-line" style="top:50%"></div>
+        <div class="title-bg-line" style="top:80%"></div>
+      </div>
+      <span class="hero-title-orange">O seu comercial não gera o que você almeja?</span>
+      <span class="hero-title-white">Implemente o modelo comercial que vai aumentar seu faturamento utilizando as três principais engrenagens do comercial.</span>
+    </div>
+
+    <!-- SUBTÍTULO VERDE -->
     <p class="hero-sub">
-      Canais de aquisição, processo comercial e construção de oferta. <strong>Quem ajusta os três cresce. Quem ignora, estagna.</strong> Vou mostrar ao vivo como aplicar esse modelo no seu negócio.
+      Acesse os bastidores deste modelo comercial, que já gerou <strong>+R$500M em vendas</strong> para empresas parceiras.
     </p>
 
-    <div class="event-info">
-      <div class="event-item">📅 Terça-feira (24/03)</div>
-      <div class="event-divider"></div>
-      <div class="event-item">🕛 12h00</div>
-      <div class="event-divider"></div>
-      <div class="event-item">💻 Online</div>
+    <!-- PRÉ-BOTÃO AO VIVO -->
+    <div class="live-label">
+      <div class="live-dot"></div>
+      O acesso à aula será enviado no grupo oficial
     </div>
 
+    <!-- BOTÃO -->
     <a href="https://chat.whatsapp.com/Iwi10qePQ49G6L6Z9wo7KU"
-       class="btn-whatsapp"
-       id="whatsapp-btn"
- >
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      Entrar no grupo agora
+       class="btn-main"
+       id="whatsapp-btn">
+      Acessar grupo oficial
     </a>
 
-    <span class="btn-sub">Gratuito · O link da reunião chega pelo grupo</span>
 
+
+    <!-- URGÊNCIA -->
     <div class="urgency-note">
       <div class="urgency-dot"></div>
-      Vagas limitadas — reunião fechada para donos de empresa
+      Vagas limitadas — reunião fechada
     </div>
-  </div>
 
-
-
-  <!-- CREDIBILIDADE -->
-  <div class="credibility">
-    <div class="cred-stats">
-      <div class="cred-item"><div class="cred-value">+70</div><div class="cred-desc">Empresas</div></div>
-      <div class="cred-item"><div class="cred-value">R$500M</div><div class="cred-desc">Em negócios</div></div>
-      <div class="cred-item"><div class="cred-value">5 anos</div><div class="cred-desc">De operação</div></div>
-    </div>
   </div>
 
   <div class="footer">© 2026 Branches Performance · Todos os direitos reservados</div>
 </div>
 
-
 <script>
+  const DURATION = 3500;
+  const fillClasses = ['gf1','gf2','gf3'];
+  let current = 0, timer;
+
+  const track = document.getElementById('gear-track');
+  const cards = [document.getElementById('gc0'), document.getElementById('gc1'), document.getElementById('gc2')];
+  const dots  = document.querySelectorAll('.gear-dot');
+  const fill  = document.getElementById('gear-fill');
+
+  function goTo(i) {
+    clearTimeout(timer);
+    current = i;
+
+    const cardW = cards[0].offsetWidth + 10;
+    const galleryW = track.parentElement.offsetWidth;
+    const offset = (galleryW - cards[0].offsetWidth) / 2 - 20;
+    track.style.transform = `translateX(${offset - i * cardW}px)`;
+
+    cards.forEach((c,j) => c.classList.toggle('active', j === i));
+    dots.forEach((d,j) => d.classList.toggle('active', j === i));
+
+    fill.className = 'gear-fill ' + fillClasses[i];
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      fill.style.transition = `width ${DURATION}ms linear`;
+      fill.style.width = '100%';
+    }));
+
+    schedule();
+  }
+
+  function schedule() {
+    clearTimeout(timer);
+    timer = setTimeout(() => { current = (current + 1) % 3; goTo(current); }, DURATION);
+  }
+
+  window.addEventListener('load', () => goTo(0));
+
   document.getElementById('whatsapp-btn').addEventListener('click', function() {
     fbq('track', 'Lead');
   });
